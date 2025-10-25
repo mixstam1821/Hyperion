@@ -22,7 +22,7 @@ It was trained on radiative-transfer model inputs/outputs from the **EarthSenseD
 
 ## 📦 Model
 
-Firstly, download the model:
+First, download the model and place it in the Hyperion folder:
 
 Zenodo DOI: https://zenodo.org/records/17429272
 
