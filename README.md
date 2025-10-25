@@ -33,7 +33,7 @@ Filename: Hyperion_RF.pkl (~40 MB)
 ## 🚀 Run Locally (Python)
 ```bash
 # 1. Clone and enter repo
-git clone https://github.com/yourusername/Hyperion.git
+git clone https://github.com/mixstam1821/Hyperion.git
 cd Hyperion
 
 # 2. Create virtual environment (optional)
