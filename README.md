@@ -57,4 +57,6 @@ docker build -t hyperion-app .
 
 # Run container
 docker run -p 7860:7860 hyperion-app
+
+# Open http://localhost:7860/Hyperion_GUI
 ```
