@@ -20,8 +20,6 @@ COPY . .
 EXPOSE 7860
 
 # Start Bokeh server with long session timeout
-CMD ["bokeh", "serve", ".", \
-     "--allow-websocket-origin=*", \
-     "--port=7860", \
-     "--session-token-expiration=86400000", \
-     "--address=0.0.0.0"]
+CMD ["bokeh", "serve", "--show", \
+     "Hyperion_GUI", \
+     "--port=7860"]
