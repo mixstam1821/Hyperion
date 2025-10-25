@@ -21,5 +21,5 @@ EXPOSE 7860
 
 # Start Bokeh server with long session timeout
 CMD ["bokeh", "serve", "--show", \
-     "Hyperion_GUI", \
+     "Hyperion_GUI.py", \
      "--port=7860"]
