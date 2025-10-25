@@ -2,7 +2,7 @@
 
 **Hyperion** is a Random Forest emulator that predicts monthly **Surface Solar Radiation (SSR)**  
 from 2 basic atmospheric parameters: **Cloud cover**, and **AOD**.  
-It was trained on radiative-transfer model outputs from the **EarthSenseData (Stamatis et al., 2025)** (https://zenodo.org/records/17382343).
+It was trained on radiative-transfer model inputs/outputs from the **EarthSenseData (Stamatis et al., 2025)** (https://zenodo.org/records/17382343).
 
 ---
 
@@ -12,6 +12,11 @@ It was trained on radiative-transfer model outputs from the **EarthSenseData (St
 - Interactive **Bokeh dashboard** 
 - Fully portable via Docker  
 - Uses **scikit-learn 1.7** compatible `.pkl` model
+
+---
+
+## 🎬 Demo
+![Hyperion Demo](assets/hyperion.gif)
 
 ---
 
