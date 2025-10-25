@@ -45,7 +45,9 @@ venv\Scripts\activate     # (Windows)
 pip install -r requirements.txt
 
 # 4. Run app
-bokeh serve . --allow-websocket-origin="*" --port 9942 --session-token-expiration=86400000
+bokeh serve --show Hyperion_GUI.py --port=9959
+
+# 5. Open http://localhost:9959/Hyperion_GUI
 ```
 
 ## 🐳 Run with Docker
