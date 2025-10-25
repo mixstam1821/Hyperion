@@ -1,0 +1,7 @@
+bokeh==3.6.3
+pandas
+numpy
+scikit-learn==1.7.0
+joblib
+requests
+openpyxl
