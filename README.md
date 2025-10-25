@@ -15,6 +15,16 @@ It was trained on radiative-transfer model outputs from the **EarthSenseData (St
 
 ---
 
+## 📦 Model
+
+Firstly, download the model:
+
+Zenodo DOI: https://zenodo.org/records/17429272
+
+Filename: Hyperion_RF.pkl (~40 MB)
+
+---
+
 ## 🚀 Run Locally (Python)
 ```bash
 # 1. Clone and enter repo
