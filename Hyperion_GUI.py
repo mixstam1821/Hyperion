@@ -285,7 +285,12 @@ def do_batch_predict():
     if err3:
         status.text = err3
         return
-    month_val = int(month_sl.value)
+    # Extract month numbers from the time column (if present)
+    if "time" in df and not df["time"].isna().all():
+        df["month"] = df["time"].dt.month
+    else:
+        df["month"] = month_val  # fallback to slider
+
 
     try:
         df = _read_upload(file_in)
