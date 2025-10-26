@@ -231,6 +231,37 @@ table = DataTable(
     ],
     width=900, height=220, index_position=None, selectable=True,stylesheets=[dark_table_style],
 )
+# Example format hint for file upload
+upload_hint = Div(
+    text="""
+    <div style='background:#222;padding:14px;border-radius:8px;width:860px;
+                box-shadow:0 0 10px #00ffff44;font-family:Consolas,monospace;'>
+        <b style='color:#00eaff;'>📂 Expected input format:</b><br><br>
+        <table style='border-collapse:collapse;color:white;'>
+          <tr><th style='padding:4px 12px;border:1px solid #555;'>date</th>
+              <th style='padding:4px 12px;border:1px solid #555;'>cloud</th>
+              <th style='padding:4px 12px;border:1px solid #555;'>aod</th></tr>
+          <tr><td style='padding:4px 12px;border:1px solid #555;'>2018-01</td>
+              <td style='padding:4px 12px;border:1px solid #555;'>0.4</td>
+              <td style='padding:4px 12px;border:1px solid #555;'>0.10</td></tr>
+          <tr><td style='padding:4px 12px;border:1px solid #555;'>2018-02</td>
+              <td style='padding:4px 12px;border:1px solid #555;'>0.3</td>
+              <td style='padding:4px 12px;border:1px solid #555;'>0.12</td></tr>
+          <tr><td style='padding:4px 12px;border:1px solid #555;'>2018-03</td>
+              <td style='padding:4px 12px;border:1px solid #555;'>0.6</td>
+              <td style='padding:4px 12px;border:1px solid #555;'>0.14</td></tr>
+          <tr><td style='padding:4px 12px;border:1px solid #555;'>2018-04</td>
+              <td style='padding:4px 12px;border:1px solid #555;'>0.2</td>
+              <td style='padding:4px 12px;border:1px solid #555;'>0.16</td></tr>
+        </table>
+        <p style='margin-top:8px;color:#aaa;font-size:13px;'>
+        The <b>date</b> column is optional — if omitted, months will be taken from the slider.<br>
+        Accepted formats: CSV or Excel (.csv, .xlsx).
+        </p>
+    </div>
+    """,
+    width=900
+)
 
 def _read_upload(file_input: FileInput) -> pd.DataFrame:
     if not file_input.value:
@@ -371,7 +402,7 @@ batch_panel = TabPanel(child=column(
     row(file_in,column(batch_predict_btn, download_btn),
     row(lat_in, month_sl)),
     ts,
-    table,
+    table,upload_hint,
     status
 ), title="Batch via file")
 
