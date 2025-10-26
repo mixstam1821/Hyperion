@@ -285,12 +285,7 @@ def do_batch_predict():
     if err3:
         status.text = err3
         return
-    # Extract month numbers from the time column (if present)
-    if "time" in df and not df["time"].isna().all():
-        df["month"] = df["time"].dt.month
-    else:
-        df["month"] = month_val  # fallback to slider
-
+    month_val = int(month_sl.value)
 
     try:
         df = _read_upload(file_in)
@@ -305,21 +300,25 @@ def do_batch_predict():
 
     # fill time if missing
     if df["time"].isna().all():
-        # create a monthly index starting at Jan 2000 just for plotting,
-        # or use simple 0..N index if you prefer
+        # create synthetic monthly index for plotting only
         df["time"] = pd.date_range("2000-01-01", periods=len(df), freq="MS")
 
-    # Predict
+    # 🔹 NEW: Extract month numbers from time column if available
+    if "time" in df and not df["time"].isna().all():
+        df["month"] = df["time"].dt.month
+    else:
+        df["month"] = month_val  # fallback to slider if no valid time column
+
+    # 🔹 Predict with per-row months (variable seasonal input)
     preds = model.predict(
         df["cloud"].values,
         df["aod"].values,
         np.full(len(df), lat_val, dtype=np.float32),
-        np.full(len(df), month_val, dtype=np.float32)
+        df["month"].values.astype(np.float32)
     )
 
     df["ssr"] = preds.astype(float)
     df["lat"] = lat_val
-    df["month"] = month_val
     df.reset_index(drop=True, inplace=True)
     gc.collect()
 
@@ -332,7 +331,8 @@ def do_batch_predict():
         month=df["month"].values,
         ssr=df["ssr"].values
     )
-    status.text = f"✅ Generated {len(df)} SSR predictions (lat={lat_val}, month={month_val})."
+    status.text = f"✅ Generated {len(df)} SSR predictions (lat={lat_val}) using months from file."
+
 
 # Download CSV via CustomJS from ColumnDataSource
 download_btn.js_on_click(CustomJS(args=dict(source=batch_src), code="""
